@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@CrossOrigin("https://ai-resume-generator-frontend-omega.vercel.app")
+@CrossOrigin(origins = {"https://ai-resume-generator-frontend-omega.vercel.app", "http://localhost:5173"})
 @RequestMapping("/api/v1/resume")
 public class ResumeController {
 
