@@ -37,8 +37,10 @@ public class ResumeServiceImpl implements ResumeService {
 
 
     String loadPromptFromFile(String filename) throws IOException {
-        Path path = new ClassPathResource(filename).getFile().toPath();
-        return Files.readString(path);
+        ClassPathResource resource = new ClassPathResource(filename);
+        try (var inputStream = resource.getInputStream()) {
+            return new String(inputStream.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+        }
     }
 
     String putValuesToTemplate(String template, Map<String, String> values) {
