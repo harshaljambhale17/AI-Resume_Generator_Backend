@@ -1,84 +1,53 @@
-You are an AI resume generator assistant. Based on the user's description, you need to generate a professional resume in JSON format.
+Generate a professional IT job resume in JSON format based on the following description. Ensure the JSON is consistent, well-structured, and contains all specified keys, even if some values are empty or null. Use the exact keys provided below and maintain their hierarchy.
 
-User Description:
-{{userDescription}}
+Input Description:
+"{{userDescription}}"
 
-Instructions:
-1. First, think about the best way to structure this resume based on the provided information.
-2. Then, generate a complete resume in JSON format.
+JSON Structure Requirements:
+personalInformation: Include the following keys:
+fullName (string)
+email (string)
+phoneNumber (string)
+location (string)
+linkedIn (string or null if not provided)
+gitHub (string or null if not provided)
+portfolio (string or null if not provided)
+summary: A brief overview of skills, experience, and career goals (string).
+skills: List of object that contain two keys 'title' and 'level'
 
-Your response must follow this exact format:
+experience: A list of job roles. Each job role should include:
+jobTitle (string)
+company (string)
+location (string)
+duration (string, e.g., "Jan 2020 - Present")
+responsibility(string)
 
-<think>
-[Your analysis of the user's description and how you'll structure the resume]
-</think>
+education: A list of degrees. Each degree should include:
+degree (string)
+university (string)
+location (string)
+graduationYear (string)
 
-```json
-{
-  "personalInfo": {
-    "name": "Full Name",
-    "email": "email@example.com",
-    "phone": "Phone Number",
-    "location": "City, Country",
-    "linkedin": "LinkedIn URL (if mentioned)",
-    "github": "GitHub URL (if mentioned)",
-    "portfolio": "Portfolio URL (if mentioned)"
-  },
-  "summary": "Professional summary highlighting key skills and experience",
-  "experience": [
-    {
-      "title": "Job Title",
-      "company": "Company Name",
-      "location": "Location",
-      "startDate": "Start Date",
-      "endDate": "End Date or Present",
-      "responsibilities": [
-        "Key responsibility 1",
-        "Key responsibility 2",
-        "Key responsibility 3"
-      ]
-    }
-  ],
-  "education": [
-    {
-      "degree": "Degree Name",
-      "institution": "University/College Name",
-      "location": "Location",
-      "graduationDate": "Graduation Date",
-      "gpa": "GPA (if mentioned)"
-    }
-  ],
-  "skills": {
-    "technical": ["skill1", "skill2", "skill3"],
-    "soft": ["skill1", "skill2", "skill3"]
-  },
-  "projects": [
-    {
-      "name": "Project Name",
-      "description": "Brief description",
-      "technologies": ["tech1", "tech2"],
-      "link": "Project URL (if available)"
-    }
-  ],
-  "certifications": [
-    {
-      "name": "Certification Name",
-      "issuer": "Issuing Organization",
-      "date": "Date Obtained"
-    }
-  ],
-  "languages": [
-    {
-      "language": "Language Name",
-      "proficiency": "Proficiency Level"
-    }
-  ]
-}
-```
+certifications: A list of certifications. Each certification should include:
+title (string)
+issuingOrganization (string)
+year (string)
 
-Important:
-- Extract information from the user description accurately
-- If certain information is not provided, create reasonable professional content based on what is given
-- Ensure all dates are in a consistent format
-- Make the resume professional and well-structured
-- Include only sections that are relevant based on the user's description
+projects: A list of key projects. Each project should include:
+title (string)
+description (string)
+technologiesUsed (array of strings)
+githubLink (string or null if not provided)
+
+achievements: A list achievements that contains objects of keys
+title (string)
+year(string)
+extraInformation(string)
+
+languages: A list of spoken languages objects contain keys
+id(number)
+name(string)
+
+interests: A list of additional interests or hobbies related to technology or professional development  [list of objects having keys].
+id(number)
+name(string)
